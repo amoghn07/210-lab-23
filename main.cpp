@@ -31,7 +31,11 @@ int main() {
     fin1.close();
 
     while (true){
-        main_menu
+        int choice = main_menu();
+        if (choice == 1) add_goat(trip, names, colors);
+        else if (choice == 2) delete_goat(trip);
+        else if (choice == 3) display_trip(trip);
+        else break;
     }
 
     return 0;
@@ -72,28 +76,32 @@ void add_goat(list<Goat> &trip, string names [], string colors []){
 
 void display_trip(list<Goat> trip){
     int i = 1;
+    cout << "______________________________________\n";
+    cout << "Displaying list of goats: \n";
     for (Goat g : trip) {
         cout << '[' << i << "] ";
         cout << g.get_name() << " ";
         cout << "(" << g.get_age() << ", " << g.get_color() << ")\n";
         i++;
     }
+    cout << "______________________________________\n";
+
 }
 
 int select_goat(list<Goat> trip){
     int sz = trip.size();
     int selection;
-    cout << "Displaying list of goats to select from: \n";
     display_trip(trip);
     cout << "Please select integer value of goat to delete: ";
     cin >> selection;
 
     //error handling
-    while (cin.fail() || selection < sz || selection > sz){
+    while (!cin || selection < 1 || selection > sz){
         cout << "Please enter a valid integer selection.\n";
         cout << "Please enter integer value of goat to delete: ";
         cin >> selection;
     }
+    return selection;
 }
 
 void delete_goat(list<Goat> &trip){
