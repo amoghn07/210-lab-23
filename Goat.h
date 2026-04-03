@@ -11,8 +11,13 @@ private:
     int age;
     string color;
 public: 
+    //default constructor
     Goat()                          { name = ""; age = 0; color = ""; }
-    // write three more constructors
+    // partial constuctors
+    Goat(string n)                  { name = n; age = 0; color = "";}
+    Goat(string n, int a)           { name = n; age = a; color = "";}
+    //parameter constructor
+    Goat(string n, int a, string c) { name = n; age = a; color = c;}
 
     // setters and getters
     void set_name(string n)         { name = n; };
