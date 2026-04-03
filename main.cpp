@@ -30,6 +30,11 @@ int main() {
     while (fin1 >> colors[i++]);
     fin1.close();
 
+    for (int i = 0; i < 11; i++){
+        add_goat(trip, names, colors);
+    }
+    
+    display_trip(trip);
 
     return 0;
 }
@@ -61,7 +66,19 @@ int main_menu(){
 }
 
 void add_goat(list<Goat> &trip, string names [], string colors []){
-    Goat new_goat = Goat(names[rand() % SZ_NAMES])
-    trip.push_back
+    //creating the new goat
+    Goat new_goat = Goat(names[rand() % SZ_NAMES], (rand() % MAX_AGE) + 1, colors[rand() % SZ_COLORS]);
+    //pushing the goat to the end of the trip
+    trip.push_back(new_goat);
+}
+
+void display_trip(list<Goat> trip){
+    int i = 1;
+    for (Goat g : trip) {
+        cout << '[' << i << '] ';
+        cout << g.get_name() << " ";
+        cout << "(" << g.get_age() << ', ' << g.get_color() << ')\n';
+        i++;
+    }
 }
 
