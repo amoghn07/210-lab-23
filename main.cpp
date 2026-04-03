@@ -33,7 +33,7 @@ int main() {
     for (int i = 0; i < 11; i++){
         add_goat(trip, names, colors);
     }
-    
+
     display_trip(trip);
 
     return 0;
@@ -75,9 +75,9 @@ void add_goat(list<Goat> &trip, string names [], string colors []){
 void display_trip(list<Goat> trip){
     int i = 1;
     for (Goat g : trip) {
-        cout << '[' << i << '] ';
+        cout << '[' << i << "] ";
         cout << g.get_name() << " ";
-        cout << "(" << g.get_age() << ', ' << g.get_color() << ')\n';
+        cout << "(" << g.get_age() << ", " << g.get_color() << ")\n";
         i++;
     }
 }
