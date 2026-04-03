@@ -47,7 +47,7 @@ int main_menu(){
     cin >> choice;
 
     //error handling
-    while (!(1 <= choice <= 4)){
+    while (1 > choice > 4){
         cout << "Please enter a valid choice.\n";
         cout << "Choice --> ";
         cin >> choice;
