@@ -35,7 +35,10 @@ int main() {
         if (choice == 1) add_goat(trip, names, colors);
         else if (choice == 2) delete_goat(trip);
         else if (choice == 3) display_trip(trip);
-        else break;
+        else {
+            cout << "Thanks for the trip!";
+            break;
+        }
     }
 
     return 0;
@@ -91,6 +94,7 @@ void display_trip(list<Goat> trip){
 int select_goat(list<Goat> trip){
     int sz = trip.size();
     int selection;
+
     display_trip(trip);
     cout << "Please select integer value of goat to delete: ";
     cin >> selection;
@@ -106,11 +110,30 @@ int select_goat(list<Goat> trip){
 
 void delete_goat(list<Goat> &trip){
     int selection = select_goat(trip);
-    int i = 1;
-    for (auto it = trip.begin(); it != trip.end(); ++it)
-        if (i == selection) trip.erase(it);
+    if (selection == 0) {
+        cout << "No goats to delete.\n";
+        return;
+    }
 
-    cout << "Updated trip: \n";
+    int i = 1;
+    if (selection == 1){
+        trip.pop_front();
+    }
+
+    else if (selection == trip.size()){
+        trip.pop_back();
+    }
+
+    else{
+        for (auto it = trip.begin(); it != trip.end(); ++it){
+            if (i == selection) {
+                trip.erase(it);
+                break;
+            }
+            i++;
+        }
+    }
+    cout << "Updated List: \n";
     display_trip(trip);
 }
     
