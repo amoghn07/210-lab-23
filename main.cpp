@@ -14,6 +14,7 @@ void display_trip(list<Goat> trip);
 int main_menu();
 
 int main() {
+    list<Goat> trip;
     srand(time(0));
     bool again;
 
@@ -28,8 +29,6 @@ int main() {
     i = 0;
     while (fin1 >> colors[i++]);
     fin1.close();
-
-    int choice = main_menu();
 
 
     return 0;
@@ -49,6 +48,7 @@ int main_menu(){
     //Checking if input is int and is in range.
     while (!cin || choice < 1 || choice > 4){
         if (!cin) {
+            //clear error and clear buffer
             cin.clear();
             cin.ignore(10000, '\n');
         }
@@ -59,3 +59,9 @@ int main_menu(){
 
     return choice;
 }
+
+void add_goat(list<Goat> &trip, string names [], string colors []){
+    Goat new_goat = Goat(names[rand() % SZ_NAMES])
+    trip.push_back
+}
+
