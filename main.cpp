@@ -28,9 +28,8 @@ int main() {
     i = 0;
     while (fin1 >> colors[i++]);
     fin1.close();
-    main_menu();
 
-
+    int choice = main_menu();
 
 
     return 0;
@@ -47,7 +46,12 @@ int main_menu(){
     cin >> choice;
 
     //error handling
-    while (1 > choice > 4){
+    //Checking if input is int and is in range.
+    while (!cin || choice < 1 || choice > 4){
+        if (!cin) {
+            cin.clear();
+            cin.ignore(10000, '\n');
+        }
         cout << "Please enter a valid choice.\n";
         cout << "Choice --> ";
         cin >> choice;
